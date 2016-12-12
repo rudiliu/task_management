@@ -240,8 +240,11 @@ class Task_management_model extends CI_Model {
       $rootParentID = $this->find_root_parent($taskID);
       $this->get_task_data();
       $this->check_all_dependancy($taskID,$rootParentID,$newStatus);
-      if($this->get_task_status($rootParentID) == 0){
-        $this->remove_chosen_parents($rootParentID);
+
+      foreach ($this->taskChosenParent as $id) {
+        if($this->get_task_status($id) == 0){
+          $this->remove_chosen_parents($id);
+        }
       }
 
       if($newStatus==0){
@@ -268,7 +271,7 @@ class Task_management_model extends CI_Model {
                 if($this->taskData[$id]['status'] == 0 && $newStatus == 1){
                     $this->remove_chosen_parents($this->taskData[$id]['parent_id']);
                 }
-                if($this->taskData[$id]['status'] == 0 && $this->taskData[$id]['id'] !=$taskID && $newStatus == 0){
+                if( $this->taskData[$id]['status'] == 0 && $this->taskData[$id]['id'] !=$taskID && $newStatus == 0){
                   if (in_array($this->taskData[$id]['parent_id'], $this->taskChosenParent))
                     $this->remove_chosen_parents($this->taskData[$id]['parent_id']);
                 }
