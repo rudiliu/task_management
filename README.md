@@ -6,8 +6,10 @@ The question can be found in folder docs/Streamframe_Recruitment_Test.pdf
 
 ## Application Configuration
 * clone this repository to your local server
+* create new task_management database
 * import the database. dumb database can be found in foler docs/database/task_management_dump.sql
 * set the database name and password in application/config/database.php
+* set the base url in application/config/config.php : $config['base_url'] = 'your-base-url';
 
 ## Framework
 This application is using PHP Framework Codeigniter 3.1.2
