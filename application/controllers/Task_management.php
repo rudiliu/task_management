@@ -36,7 +36,7 @@ class Task_management extends CI_Controller {
 
 	public function task_list(){
 		$this->ajax_checking();
-		include APPPATH . 'third_party/ajax_pagination.php';
+		include APPPATH . 'third_party/Ajax_pagination.php';
 		$statusFilter = $this->input->post('filterStatus');
 		$page = $this->input->post('page');
 		$filetrParent = $this->input->post('parentID');
