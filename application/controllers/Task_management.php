@@ -87,5 +87,20 @@ class Task_management extends CI_Controller {
 		echo  json_encode($this->task_management_model->is_parent_valid());
 	}
 
+	public function truncate_tasks($keyParam){
+		//for safty please store your key to config file or database, this is just an example
+		$key = "z93Ruu4106L1ux18";
+		if($key === $keyParam){
+			$this->task_management_model->truncate_tasks();
+			$this->session->set_flashdata('success', 'Tasks table has been truncated.');
+			redirect(base_url());
+		}
+		else{
+			$this->session->set_flashdata('error', 'Tasks table failed to be truncated.');
+			redirect(base_url());
+		}
+
+	}
+
 
 }

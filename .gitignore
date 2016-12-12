@@ -1,5 +1,7 @@
 .DS_Store
 *desktop.ini
+application/config/config.php
+application/config/database.php
 
 application/cache/*
 !application/cache/index.html

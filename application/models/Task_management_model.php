@@ -297,7 +297,7 @@ class Task_management_model extends CI_Model {
 
     function has_dependancy($taskID){
       $query = $this->db->query("SELECT t1.id AS 'id', t2.id AS 'child_id' 
-                                    FROM task_management.tasks t1
+                                    FROM tasks t1
                                     LEFT JOIN tasks t2 ON t1.id=t2.parent_id
                                     WHERE t1.id=".$taskID);
       $results = $query->result_array();
@@ -332,7 +332,7 @@ class Task_management_model extends CI_Model {
 
     function find_root_parent($taskID){
         $query = $this->db->query("SELECT t1.id AS 'id', t1.parent_id as 'parent_id'
-                                    FROM task_management.tasks t1
+                                    FROM tasks t1
                                     LEFT JOIN tasks t2 ON t1.id=t2.parent_id
                                     WHERE t1.id=".$taskID." GROUP BY parent_id");
         foreach ($query->result_array() as $row) {
@@ -380,7 +380,7 @@ class Task_management_model extends CI_Model {
 
     function check_circular_dependancy($newParentID, $taskID){
         $query = $this->db->query("SELECT t1.id AS 'id', t2.id AS 'child_id' 
-                                    FROM task_management.tasks t1
+                                    FROM tasks t1
                                     LEFT JOIN tasks t2 ON t1.id=t2.parent_id
                                     WHERE t1.id=".$taskID);
         foreach ($query->result_array() as $row) {
@@ -396,6 +396,10 @@ class Task_management_model extends CI_Model {
         }
         return $check;
 
+    }
+
+    function truncate_tasks(){
+      $this->db->truncate("tasks");
     }
 
 
