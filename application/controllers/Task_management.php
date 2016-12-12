@@ -40,7 +40,7 @@ class Task_management extends CI_Controller {
 		$statusFilter = $this->input->post('filterStatus');
 		$page = $this->input->post('page');
 		$filetrParent = $this->input->post('parentID');
-		$limit = 10;
+		$limit = 20;
 		$pagConfig = array(
 							'baseURL'=> base_url() . "task_management/task_list", 
 							'totalRows'=> $this->task_management_model->record_count_task($statusFilter,$filetrParent), 
