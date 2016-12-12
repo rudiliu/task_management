@@ -7,7 +7,7 @@ The question can be found in folder docs/Streamframe_Recruitment_Test.pdf
 ## Application Configuration
 * clone this repository to your local server
 * create new task_management database
-* import the database. dumb database can be found in foler docs/database/task_management_dump.sql
+* import the database. dumb database can be found in folder docs/database/task_management_dump.sql
 * copy sample.database.php and rename it to datbase.php
 * set the database username and password (line 79 and 80)
 * copy sample.config.php and rename it to config.php
